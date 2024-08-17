@@ -1,0 +1,33 @@
+{
+  "name": "web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbo",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@auth/drizzle-adapter": "^1.4.2",
+    "@heroicons/react": "^2.1.5",
+    "@repo/db": "*",
+    "@repo/ui": "*",
+    "bcrypt": "^5.1.1",
+    "next": "14.2.3",
+    "next-auth": "^4.24.7",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "*",
+    "@repo/typescript-config": "*",
+    "@types/bcrypt": "^5.0.2",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "15.0.0-rc.0",
+    "typescript": "^5"
+  }
+}

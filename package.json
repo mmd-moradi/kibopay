@@ -1,11 +1,14 @@
 {
-  "name": "paytm",
+  "name": "kibopay",
   "private": true,
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "db:genrate": "cd packages/db && npm run genrate",
+    "db:migrate": "cd packages/db && npm run migrate",
+    "start-user-app": "cd ./apps/user-app && npm run start"
   },
   "devDependencies": {
     "prettier": "^3.2.5",
@@ -14,6 +17,10 @@
   },
   "engines": {
     "node": ">=18"
+  },
+  "overrides": {
+  "react": "18.2.0",
+  "react-dom": "18.2.0"
   },
   "packageManager": "npm@9.6.6",
   "workspaces": [
