@@ -8,19 +8,38 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:14
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: mysecretpassword
+          POSTGRES_DB: postgres
+        options: >-
+          --health-cmd="pg_isready -U postgres"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
     steps:
       - uses: actions/checkout@v3
+
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '20'
-      
+
+      - name: Wait for PostgreSQL to be ready
+        run: until pg_isready -h 127.0.0.1 -p 5432 -U postgres; do echo "Waiting for postgres..."; sleep 2; done
+
       - name: Install Dependencies
         run: npm install 
-      
-      - name: Genrate and migrate database
+
+      - name: Generate and Migrate Database
         env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          DATABASE_URL: postgresql://postgres:mysecretpassword@localhost:5432/postgres
         run: npm run db:generate && npm run db:migrate
 
       - name: Run Build
