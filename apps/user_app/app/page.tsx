@@ -1,5 +1,4 @@
 import { authOptions } from "@/lib/auth";
-import { Button } from "@repo/ui/components/ui/button";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 
