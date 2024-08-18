@@ -16,7 +16,10 @@ jobs:
           node-version: '20'
       
       - name: Install Dependencies
-        run: npm install
-        
+        run: npm install 
+      
+      - name: Genrate and migrate database
+        run: npm run db:generate && npm run db:migrate
+
       - name: Run Build
         run: npm run build
