@@ -19,6 +19,8 @@ jobs:
         run: npm install 
       
       - name: Genrate and migrate database
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
         run: npm run db:generate && npm run db:migrate
 
       - name: Run Build
