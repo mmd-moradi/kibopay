@@ -6,7 +6,7 @@
     "dev": "turbo dev",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "db:genrate": "cd packages/db && npm run genrate",
+    "db:generate": "cd packages/db && npm run generate",
     "db:migrate": "cd packages/db && npm run migrate",
     "start-user-app": "cd ./apps/user-app && npm run start"
   },
