@@ -8,7 +8,7 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "db:generate": "cd packages/db && npm run generate",
     "db:migrate": "cd packages/db && npm run migrate",
-    "start-user-app": "cd ./apps/user-app && npm run start"
+    "start-user-app": "cd ./apps/user_app && npm run start"
   },
   "devDependencies": {
     "prettier": "^3.2.5",
