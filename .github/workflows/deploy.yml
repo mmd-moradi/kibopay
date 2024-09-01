@@ -28,3 +28,15 @@ jobs:
 
     - name: Verify Pushed Image
       run: docker pull xcobar1/kibopay:latest  # Replace with your Docker Hub username and repository
+      
+    - name: Deploy to GCP VM
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USERNAME }}
+        key: ${{ secrets.SSH_KEY }}
+        script: |
+          sudo docker pull xcobar1/kibopay:latest
+          sudo docker stop kibopay || true
+          sudo docker rm kibopay || true
+          sudo docker run -d --name kibopay -p 3005:3000 xcobar1/kibopay:latest
